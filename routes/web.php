@@ -8,7 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 
 // Home page
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('app');
 
 // Show all categories
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');

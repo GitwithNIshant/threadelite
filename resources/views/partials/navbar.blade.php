@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Ink N Stitch</title>
+  <title>Thread Elite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -16,9 +16,31 @@
 
 </head>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".main-navbar .dropdown-submenu").forEach(function(submenu) {
+      submenu.addEventListener("mouseenter", function() {
+        let menu = submenu.querySelector(".dropdown-menu");
+        if (!menu) return;
+
+        let rect = menu.getBoundingClientRect();
+
+        // If submenu goes outside screen → open left
+        if (rect.right > window.innerWidth - 20) {
+          submenu.classList.add("open-left");
+        } else {
+          submenu.classList.remove("open-left");
+        }
+      });
+    });
+  });
+</script>
+<!-- Bootstrap JS (Bundle includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <body>
   {{-- Navbar --}}
-  <nav class="navbar navbar-expand-lg navbar-light main-navbar" style="background-color: #f6f7f7;">
+  <nav class="navbar navbar-expand-lg navbar-light main-navbar" style="background-color: #dcd7d7ff;">
     <div class="container">
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -114,25 +136,34 @@
 
           <!-- Contact -->
           <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
+          <!-- phone number -->
+
+          <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/phonenumber') }}" style="fontco"><i class="fas fa-phone"></i> +91 98222 92306 </a></li> -->
+          <li class="nav-item">
+            <a class="nav-link custom-phone-link" href="{{ url('/') }}" style="color: #058ff7 !important;">
+              <i class="fas fa-phone"></i>+91 98222 92306
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-  
+
   <!-- Secondary Navbar -->
   <!-- Secondary Navbar (Shrunk like product navbar) -->
   <div class="container py-2">
     <div class="d-flex justify-content-between align-items-center">
       <!-- Left: Logo -->
+
       <div>
         <a href="{{ url('/') }}">
-          <img src="{{ asset('logo\logo.svg') }}" alt="Ink N Stitch Logo" width="298.9" height="62">
+          <img src="{{ asset('logo/image1.svg') }}" alt="Ink N Stitch Logo" width="298.9" height="62">
         </a>
-
       </div>
 
+
       <!-- Right: Search Box -->
-      <div class="d-flex align-items-center" style="max-width: 400px; width: 100%;">
+      <div class="d-flex align-items-center ms-auto" style="max-width: 400px; width: 100%;">
         <input type="text" class="form-control border-dark rounded-0" placeholder="Search products...">
         <button class="btn btn-outline-dark rounded-0">
           <i class="fa fa-search"></i>
@@ -140,6 +171,7 @@
       </div>
     </div>
   </div>
+
 
   <!-- Product Categories Navbar (Full Width) -->
   <!-- Secondary Navbar -->
@@ -222,7 +254,7 @@
     </div>
   </nav>
   <!-- Intro Section -->
-  <div class="container my-3 intro-section">
+  <!-- <div class="container my-3 intro-section">
     <h3 class="intro-heading">
       Your right search for <span>corporate clothing</span> ends here
     </h3>
@@ -233,11 +265,12 @@
       have come up with a one-stop solution for all types of comfortable and trendy garments
       for your company.
     </h5>
-  </div>
+  </div> -->
 
 
 
-
+  @include('partials.banner')
+@include('categories.show')
   {{-- Main Content --}}
   <main>
     @yield('content')
