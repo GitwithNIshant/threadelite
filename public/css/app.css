@@ -434,7 +434,10 @@
     border-radius: 3px;
 }
 
-
+/* Body background */
+body {
+    background-color: #e4ded4;
+}
 /* Responsive Breakpoints */
 @media (max-width: 1200px) {
     .category-grid {
