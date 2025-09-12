@@ -40,13 +40,34 @@
 
 <body>
   {{-- Navbar --}}
-  <nav class="navbar navbar-expand-lg navbar-light main-navbar" style="background-color: #dcd7d7ff;">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light main-navbar sticky-top" style="background-color: #fafafaff;">
+    <div>
+      <div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a href="{{ url('/') }}">
+        <img src="{{ asset('logo/image1.svg') }}" alt="Ink N Stitch Logo" width="298.9" height="62">
+      </a>
+    </div>
+    <div class="container">
+      <!-- Left: Logo -->
+
+
+      <!-- Right: Search Box -->
+      <div class="search-container">
+        <div class="search-box">
+          <input type="text" class="search-input" placeholder="Enter keywords to search...">
+          <button class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
@@ -151,32 +172,16 @@
 
   <!-- Secondary Navbar -->
   <!-- Secondary Navbar (Shrunk like product navbar) -->
-  <div class="container py-2">
-    <div class="d-flex justify-content-between align-items-center">
-      <!-- Left: Logo -->
-
-      <div>
-        <a href="{{ url('/') }}">
-          <img src="{{ asset('logo/image1.svg') }}" alt="Ink N Stitch Logo" width="298.9" height="62">
-        </a>
-      </div>
 
 
-      <!-- Right: Search Box -->
-      <div class="d-flex align-items-center ms-auto" style="max-width: 400px; width: 100%;">
-        <input type="text" class="form-control border-dark rounded-0" placeholder="Search products...">
-        <button class="btn btn-outline-dark rounded-0">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+
+
 
 
   <!-- Product Categories Navbar (Full Width) -->
   <!-- Secondary Navbar -->
   <!-- Product Categories Navbar (Shrunk) -->
-  <nav class="navbar navbar-expand-lg navbar-light product-navbar border-bottom mb-2">
+  <nav class="navbar navbar-expand-lg navbar-light product-navbar border-bottom mb-2 sticky-half-navbar">
     <div class="container">
       <ul class="navbar-nav mx-auto">
 
@@ -253,6 +258,8 @@
       </ul>
     </div>
   </nav>
+
+
   <!-- Intro Section -->
   <!-- <div class="container my-3 intro-section">
     <h3 class="intro-heading">
@@ -270,7 +277,7 @@
 
 
   @include('partials.banner')
-@include('categories.show')
+  @include('categories.show')
   {{-- Main Content --}}
   <main>
     @yield('content')

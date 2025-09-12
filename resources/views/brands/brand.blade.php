@@ -12,3 +12,32 @@
         @endforeach
     </div>
 </div>
+<div class="promo-section">
+  <div class="promo-grid">
+    <!-- Box 1 -->
+    <div class="promo-box blue">
+      <h2>Order It</h2>
+      <p>Choose the quantities and sizes you need then checkout.</p>
+      <a href="#" class="btn">Start Designing</a>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="promo-box image">
+      <img src="images/tshirt1.jpg" alt="Promo Image 1">
+    </div>
+
+    <!-- Box 3 -->
+    <div class="promo-box image">
+      <img src="images/tshirt2.jpg" alt="Promo Image 2">
+    </div>
+
+    <!-- Box 4 -->
+    <div class="promo-box white">
+      <h2>Spend $250 + More, Get 25% Off</h2>
+      <p>(Coupon Not Valid With Promotional Products)</p>
+      <h3 class="discount">25% OFF For Over $250</h3>
+      <p class="code">INKSTITCH25</p>
+      <a href="#" class="btn">Shop Now</a>
+    </div>
+  </div>
+</div>
