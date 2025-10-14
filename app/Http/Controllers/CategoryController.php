@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -10,23 +11,51 @@ class CategoryController extends Controller
     // Show all categories
     public function index()
     {
-        // fetch all categories (you can paginate or limit if needed)
-        $categories = Category::all();
+        $categories = Category::all(); // Paginate if needed: ->paginate(20);
 
         return view('categories.index', compact('categories'));
     }
 
-    // Show a single category with subcategories + products
-    public function show($slug)
+    // Show a single category with subcategories + products (filtered by color if requested)
+    public function show($slug, Request $request)
     {
-        // Find category with children (subcategories)
-        $category = Category::where('slug', $slug)
-            ->with('children') // eager load subcategories
-            ->firstOrFail();
+        $category = Category::where('slug', $slug)->firstOrFail();
 
-        // If you have products related to category
-        $products = $category->products ?? collect();
+        // Base query
+        $productsQuery = $category->products()->where('is_active', 1);
 
-        return view('categories.show', compact('category', 'products'));
+        // Filter by color if requested
+        $selectedColor = $request->get('color');
+        if ($selectedColor) {
+            $productsQuery->where('color_code', $selectedColor);
+        }
+
+        // ✅ Change to paginate() instead of get() – e.g., 12 items per page
+        $products = $productsQuery->orderBy('created_at', 'desc')->paginate(12);
+
+        // For colors/sizes/brands, use ->get() since we need all for filters
+        $colors = $category->products()
+            ->whereNotNull('color_code')
+            ->where('is_active', 1)
+            ->distinct()
+            ->pluck('color_code')
+            ->toArray();
+
+        $sizes = $category->products()
+            ->whereNotNull('size')
+            ->where('is_active', 1)
+            ->distinct()
+            ->pluck('size')
+            ->toArray();
+
+        $brands = $category->products()
+            ->with('brand')
+            ->where('is_active', 1)
+            ->get()
+            ->pluck('brand')
+            ->filter()
+            ->unique('id');
+
+        return view('categories.show', compact('category', 'products', 'colors', 'sizes', 'brands', 'selectedColor'));
     }
 }

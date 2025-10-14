@@ -40,7 +40,7 @@
 
 <body>
   {{-- Navbar --}}
-  <nav class="navbar navbar-expand-lg navbar-light main-navbar sticky-top" style="background-color: #fafafaff;">
+  <nav class="navbar navbar-expand-lg navbar-light main-navbar sticky-top" style="background-color: #680502 ;">
     <div>
       <div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -50,7 +50,7 @@
       </div>
 
       <a href="{{ url('/') }}">
-        <img src="{{ asset('logo/image1.svg') }}" alt="Ink N Stitch Logo" width="298.9" height="62">
+        <img src="{{ asset('logo/image1.svg') }}" alt="Ink N Stitch Logo" width="298.9" height="56">
       </a>
     </div>
     <div class="container">
@@ -72,91 +72,18 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <!-- Home -->
-          <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('/') }}" style="color: #eceadf !important;">Home</a></li>
 
           <!-- About -->
-          <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}" style="color: #eceadf !important;">About Us</a></li>
 
           <!-- Products -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#">Products</a>
-            <ul class="dropdown-menu">
-
-              <!-- Polo T-Shirts -->
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">Polo T-Shirts</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Cotton</a></li>
-                  <li><a class="dropdown-item" href="#">Dry Fit</a></li>
-                  <li><a class="dropdown-item" href="#">Female</a></li>
-                  <li><a class="dropdown-item" href="#">Kids</a></li>
-                  <li><a class="dropdown-item" href="#">Branded</a></li>
-                </ul>
-              </li>
-
-              <!-- Roundneck -->
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">Roundneck T-Shirts</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Dry Fit</a></li>
-                  <li><a class="dropdown-item" href="#">Female</a></li>
-                  <li><a class="dropdown-item" href="#">Kids</a></li>
-                  <li><a class="dropdown-item" href="#">Branded</a></li>
-                </ul>
-              </li>
-
-              <!-- Shirts -->
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">Shirts</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Cotton</a></li>
-                  <li><a class="dropdown-item" href="#">Polo</a></li>
-                  <li><a class="dropdown-item" href="#">Female</a></li>
-                  <li><a class="dropdown-item" href="#">Kids</a></li>
-                </ul>
-              </li>
-
-              <!-- Sweat Shirts -->
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">Sweat Shirts</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Unisex</a></li>
-                  <li><a class="dropdown-item" href="#">Male</a></li>
-                  <li><a class="dropdown-item" href="#">Female</a></li>
-                </ul>
-              </li>
-
-              <!-- Jackets -->
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">Jackets</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Leather</a></li>
-                  <li><a class="dropdown-item" href="#">Unisex</a></li>
-                  <li><a class="dropdown-item" href="#">Male</a></li>
-                  <li><a class="dropdown-item" href="#">Female</a></li>
-                </ul>
-              </li>
-
-              <!-- Uniforms -->
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">Uniforms</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Alvon</a></li>
-                  <li><a class="dropdown-item" href="#">Dagri</a></li>
-                  <li><a class="dropdown-item" href="#">Staff Uniform</a></li>
-                  <li><a class="dropdown-item" href="#">Blazer</a></li>
-                </ul>
-              </li>
-
-              <!-- Single Items -->
-              <li><a class="dropdown-item" href="#">Caps</a></li>
-              <li><a class="dropdown-item" href="#">Bags</a></li>
-              <li><a class="dropdown-item" href="#">Gifts</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #eceadf !important;">Products</a>
           </li>
 
           <!-- Contact -->
-          <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}" style="color: #eceadf !important;">Contact</a></li>
           <!-- phone number -->
 
           <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/phonenumber') }}" style="fontco"><i class="fas fa-phone"></i> +91 98222 92306 </a></li> -->
@@ -181,7 +108,7 @@
   <!-- Product Categories Navbar (Full Width) -->
   <!-- Secondary Navbar -->
   <!-- Product Categories Navbar (Shrunk) -->
-  <nav class="navbar navbar-expand-lg navbar-light product-navbar border-bottom mb-2 sticky-half-navbar">
+  <nav class="navbar navbar-expand-lg navbar-light product-navbar border-bottom mb-2 sticky-half-navbar" style="background-color: #eceadf;">
     <div class="container">
       <ul class="navbar-nav mx-auto">
 
@@ -278,6 +205,7 @@
 
   @include('partials.banner')
   @include('categories.show')
+  @include('brands.brand')
   {{-- Main Content --}}
   <main>
     @yield('content')
@@ -285,7 +213,7 @@
 
   {{-- Footer --}}
   <footer class="bg-dark text-white text-center py-3 mt-4">
-    &copy; {{ date('Y') }} Ink N Stitch. All rights reserved.
+    &copy; {{ date('Y') }} Thread Elite. All rights reserved.
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
